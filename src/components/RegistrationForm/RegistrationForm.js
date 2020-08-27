@@ -11,17 +11,17 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    const { full_name, admin, user_name, password } = ev.target
+    const { regcode, user_name, password } = ev.target
 
     this.setState({ error: null })
     AuthApiService.postUser({
       user_name: user_name.value,
       password: password.value,
-      full_name: full_name.value,
+      regcode: regcode.value,
       admin: false,
     })
       .then((user) => {
-        full_name.value = ''
+        regcode.value = ''
         user_name.value = ''
         password.value = ''
         this.props.onRegistrationSuccess()
@@ -36,15 +36,15 @@ export default class RegistrationForm extends Component {
     return (
       <form className='RegistrationForm' onSubmit={this.handleSubmit}>
         <div role='alert'>{error && <p className='red'>{error}</p>}</div>
-        <div className='full_name'>
-          <label htmlFor='RegistrationForm__full_name'>
-            Full name <Required />
+        <div className='regcode'>
+          <label htmlFor='RegistrationForm__regcode'>
+            Registration Code <Required />
           </label>
           <Input
-            name='full_name'
+            name='regcode'
             type='text'
             required
-            id='RegistrationForm__full_name'
+            id='RegistrationForm__regcode'
           ></Input>
         </div>
         <div className='user_name'>

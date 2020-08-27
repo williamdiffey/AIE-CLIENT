@@ -31,73 +31,66 @@ export default class ArticlePage extends Component {
 
   renderArticle() {
     const { article, comments } = this.context
-    return <>
-      <h2>{article.title}</h2>
-      <p>
-        <ArticleStyle article={article} />
-        {article.author.id && <>
+    return (
+      <>
+        <h2>{article.title}</h2>
+        <p>
+          <ArticleStyle article={article} />
+          {article.author.id && (
+            <>
+              <Hyph />
+              <ArticleAuthor article={article} />
+            </>
+          )}
           <Hyph />
-          <ArticleAuthor article={article} />
-        </>}
-        <Hyph />
-        <NiceDate date={article.date_created} />
-      </p>
-      <ArticleContent article={article} />
-      <ArticleComments comments={comments} />
-      <CommentForm />
-    </>
+          <NiceDate date={article.date_created} />
+        </p>
+        <ArticleContent article={article} />
+        <ArticleComments comments={comments} />
+        <CommentForm />
+      </>
+    )
   }
 
   render() {
     const { error, article } = this.context
     let content
     if (error) {
-      content = (error.error === `Article doesn't exist`)
-        ? <p className='red'>Article not found</p>
-        : <p className='red'>There was an error</p>
+      content =
+        error.error === `Article doesn't exist` ? (
+          <p className='red'>Article not found</p>
+        ) : (
+          <p className='red'>There was an error</p>
+        )
     } else if (!article.id) {
       content = <div className='loading' />
     } else {
       content = this.renderArticle()
     }
-    return (
-      <Section className='ArticlePage'>
-        {content}
-      </Section>
-    )
+    return <Section className='ArticlePage'>{content}</Section>
   }
 }
 
 function ArticleStyle({ article }) {
   return (
     <span className='ArticlePage__style'>
-      <StyleIcon style={article.style} />
-      {' '}
-      {article.style}
+      <StyleIcon style={article.style} /> {article.style}
     </span>
   )
 }
 
 function ArticleAuthor({ article = nullArticle }) {
-  return (
-    <span className='ArticlePage__author'>
-      {article.author.full_name}
-    </span>
-  )
+  return <span className='ArticlePage__author'>{article.author.user_name}</span>
 }
 
 function ArticleContent({ article }) {
-  return (
-    <p className='ArticlePage__content'>
-      {article.content}
-    </p>
-  )
+  return <p className='ArticlePage__content'>{article.content}</p>
 }
 
 function ArticleComments({ comments = [] }) {
   return (
     <ul className='ArticlePage__comment-list'>
-      {comments.map(comment =>
+      {comments.map((comment) => (
         <li key={comment.id} className='ArticlePage__comment'>
           <p className='ArticlePage__comment-text'>
             <FontAwesomeIcon
@@ -107,11 +100,9 @@ function ArticleComments({ comments = [] }) {
             />
             {comment.text}
           </p>
-          <p className='ArticlePage__comment-user'>
-            {comment.user.full_name}
-          </p>
+          <p className='ArticlePage__comment-user'>{comment.user.user_name}</p>
         </li>
-      )}
+      ))}
     </ul>
   )
 }

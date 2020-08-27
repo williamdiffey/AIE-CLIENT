@@ -7,6 +7,8 @@ from home.
 
 -protect and promote child welfare at all times
 -promote relatively rapid creation of written English
+-promote p2p communication
+-promote reading skills
 -promote risk taking when using language
 -create an extremely simple user interface with the minimal possible options to
 avoid confusion amoungst younger users
@@ -16,9 +18,8 @@ avoid confusion amoungst younger users
 1. Only allow teachers/admin to create posts for students to respond to. This ensures
    on-topic communication within a range of suitable topics both developmentally and linguistically
 
-2. Only allow teachers/admin to edit and delete posts in order to reduce abuse/bullying. There are well documented cases of users of forums addeding abusive or questionable content only to remove it before complaints are make or action can be taken.
-   -The best learners make mistakes. Enforcing errors to stay on the app is a step to teaching that errors are a perfectly normal part of language learning and nothing to feel
-   ashamed off - something we develop in class time every day.
+2. Only allow teachers/admin to edit and delete posts in order to reduce abuse/bullying. There are well documented cases of users of forums adding abusive or questionable content only to remove it before complaints are make or action can be taken.
+   -The best learners make mistakes. Enforcing errors to stay on the app is a step to teaching that errors are a perfectly normal part of language learning and nothing to feel ashamed off - something that should also be developed in class time every day.
    -Errors can be used to inform later teaching objectives and as thus are important
 
 3. Not to require email or real name to register. Many children do not have access to email due to parental decisions on the matter. Full names should not be stored online unless required. The unique sign up code will suffice for indentification if needed.
