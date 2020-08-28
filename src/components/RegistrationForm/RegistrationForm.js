@@ -11,24 +11,32 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    const { regcode, user_name, password } = ev.target
+    const { regcode, user_name, password, confirm_password } = ev.target
+    console.log(password.value)
+    console.log(confirm_password.value)
 
-    this.setState({ error: null })
-    AuthApiService.postUser({
-      user_name: user_name.value,
-      password: password.value,
-      regcode: regcode.value,
-      admin: false,
-    })
-      .then((user) => {
-        regcode.value = ''
-        user_name.value = ''
-        password.value = ''
-        this.props.onRegistrationSuccess()
+    if (password !== confirm_password) {
+      this.setState({ error: 'passwords do not match' })
+      password.value = ''
+      confirm_password.value = ''
+    } else {
+      this.setState({ error: null })
+      AuthApiService.postUser({
+        user_name: user_name.value,
+        password: password.value,
+        regcode: regcode.value,
+        admin: false,
       })
-      .catch((res) => {
-        this.setState({ error: res.error })
-      })
+        .then((user) => {
+          regcode.value = ''
+          user_name.value = ''
+          password.value = ''
+          this.props.onRegistrationSuccess()
+        })
+        .catch((res) => {
+          this.setState({ error: res.error })
+        })
+    }
   }
 
   render() {
@@ -36,17 +44,6 @@ export default class RegistrationForm extends Component {
     return (
       <form className='RegistrationForm' onSubmit={this.handleSubmit}>
         <div role='alert'>{error && <p className='red'>{error}</p>}</div>
-        <div className='regcode'>
-          <label htmlFor='RegistrationForm__regcode'>
-            Registration Code <Required />
-          </label>
-          <Input
-            name='regcode'
-            type='text'
-            required
-            id='RegistrationForm__regcode'
-          ></Input>
-        </div>
         <div className='user_name'>
           <label htmlFor='RegistrationForm__user_name'>
             User name <Required />
@@ -67,6 +64,28 @@ export default class RegistrationForm extends Component {
             type='password'
             required
             id='RegistrationForm__password'
+          ></Input>
+        </div>
+        <div className='confirm_password'>
+          <label htmlFor='RegistrationForm__confirm_password'>
+            Confirm Password <Required />
+          </label>
+          <Input
+            name='confirm_password'
+            type='password'
+            required
+            id='RegistrationForm__confirm_password'
+          ></Input>
+        </div>
+        <div className='regcode'>
+          <label htmlFor='RegistrationForm__regcode'>
+            Registration Code <Required />
+          </label>
+          <Input
+            name='regcode'
+            type='text'
+            required
+            id='RegistrationForm__regcode'
           ></Input>
         </div>
 

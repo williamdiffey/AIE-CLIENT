@@ -3,6 +3,12 @@ Talk to me in English (previously "Answer in English(AIE)"
 A streamlined app for students at my school to carry out brief written assignments
 from home.
 
+## To Do:
+
+- Add form to add codes
+- Add ability to edit and delete posts
+- Add ability to change user passwords
+
 ## Key aims:
 
 -protect and promote child welfare at all times
