@@ -12,7 +12,7 @@ import TokenService from '../../services/token-service'
 import AuthApiService from '../../services/auth-api-service'
 import IdleService from '../../services/idle-service'
 import './App.css'
-import NewArticle from '../../routes/AddNewArticlePage/AddNewArticlePage'
+import Admin from '../../routes/Admin/Admin'
 
 class App extends Component {
   state = { hasError: false }
@@ -94,7 +94,7 @@ class App extends Component {
               path={'/article/:articleId'}
               component={ArticlePage}
             />
-            <PrivateRoute path={'/newarticle'} component={NewArticle} />
+            <PrivateRoute path={'/admin'} component={Admin} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>

@@ -10,12 +10,9 @@ const AuthApiService = {
         'content-type': 'application/json',
       },
       body: JSON.stringify(user),
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json(),
+    )
   },
   postLogin({ user_name, password }) {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
@@ -25,14 +22,12 @@ const AuthApiService = {
       },
       body: JSON.stringify({ user_name, password }),
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json(),
       )
-      .then(res => {
+      .then((res) => {
         /*
-          whenever a logint is performed:
+          whenever a user logs in
           1. save the token in local storage
           2. queue auto logout when the user goes idle
           3. queue a call to the refresh endpoint based on the JWT's exp value
@@ -49,15 +44,13 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
       method: 'POST',
       headers: {
-        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json(),
       )
-      .then(res => {
+      .then((res) => {
         /*
           similar logic to whenever a user logs in, the only differences are:
           - we don't need to queue the idle timers again as the user is already logged in.
@@ -69,7 +62,7 @@ const AuthApiService = {
         })
         return res
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('refresh token request error')
         console.error(err)
       })

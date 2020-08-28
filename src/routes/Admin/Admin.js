@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NewPostForm from '../../components/NewPostForm/NewPostForm'
 import { Section } from '../../components/Utils/Utils'
 
-export default class NewArticle extends Component {
+export default class Admin extends Component {
   static defaultProps = {
     location: {},
     history: {

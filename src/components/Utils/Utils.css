@@ -1,11 +1,11 @@
-
 .Hyph {
   margin-right: 5px;
   margin-left: 5px;
 }
 
 .Input,
-.Textarea {
+.Textarea,
+.Select {
   border: 1px solid #ddd;
   display: block;
   font-size: 1.1em;
@@ -35,7 +35,7 @@
 }
 
 .Required {
-  color: #CA1551;
+  color: #ca1551;
   font-family: Arial;
   font-weight: bold;
 }
