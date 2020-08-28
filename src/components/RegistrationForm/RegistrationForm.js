@@ -15,7 +15,7 @@ export default class RegistrationForm extends Component {
     console.log(password.value)
     console.log(confirm_password.value)
 
-    if (password !== confirm_password) {
+    if (password.value !== confirm_password.value) {
       this.setState({ error: 'passwords do not match' })
       password.value = ''
       confirm_password.value = ''
@@ -31,6 +31,7 @@ export default class RegistrationForm extends Component {
           regcode.value = ''
           user_name.value = ''
           password.value = ''
+          confirm_password.value = ''
           this.props.onRegistrationSuccess()
         })
         .catch((res) => {

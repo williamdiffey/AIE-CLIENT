@@ -13,6 +13,7 @@ import AuthApiService from '../../services/auth-api-service'
 import IdleService from '../../services/idle-service'
 import './App.css'
 import Admin from '../../routes/Admin/Admin'
+import Help from '../../routes/Help/Help'
 
 class App extends Component {
   state = { hasError: false }
@@ -95,6 +96,7 @@ class App extends Component {
               component={ArticlePage}
             />
             <PrivateRoute path={'/admin'} component={Admin} />
+            <PrivateRoute path={'/help'} component={Help} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>

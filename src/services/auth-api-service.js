@@ -2,6 +2,9 @@ import config from '../config'
 import TokenService from './token-service'
 import IdleService from './idle-service'
 
+// notes - make a seperate helper that is a class comp to update user context
+// and then just call it from here
+
 const AuthApiService = {
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
@@ -33,6 +36,8 @@ const AuthApiService = {
           3. queue a call to the refresh endpoint based on the JWT's exp value
         */
         TokenService.saveAuthToken(res.authToken)
+        let user = TokenService.parseJwt(res.authToken)
+        console.log(user)
         IdleService.regiserIdleTimerResets()
         TokenService.queueCallbackBeforeExpiry(() => {
           AuthApiService.postRefreshToken()
