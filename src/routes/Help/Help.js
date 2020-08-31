@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Section } from '../../components/Utils/Utils'
 import { Link } from 'react-router-dom'
+// import { REACT_APP_TEST_VAR } from '../../../.env'
 
 export default class Help extends Component {
   static defaultProps = {
@@ -11,6 +12,8 @@ export default class Help extends Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_TEST_VAR)
+
     return (
       <Section className='LoginPage'>
         <h2>Help For Admin & Teachers</h2>
